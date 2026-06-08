@@ -1,7 +1,7 @@
 """Seed realistic demo signals for dashboard development and demos."""
 from datetime import datetime, timedelta
-from meridian import db
-from meridian.models import Signal, SignalType
+from radar import db
+from radar.models import Signal, SignalType
 
 def seed_demo_signals():
     db.init_db()

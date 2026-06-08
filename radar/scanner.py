@@ -5,10 +5,10 @@ Called by the scheduler or manually from the dashboard.
 import logging
 from datetime import datetime
 
-from meridian import db
-from meridian.adapters.pitchbook import PitchbookMonitor
-from meridian.monitors.news import NewsMonitor
-from meridian.monitors.sec_edgar import SecEdgarMonitor
+from radar import db
+from radar.adapters.pitchbook import PitchbookMonitor
+from radar.monitors.news import NewsMonitor
+from radar.monitors.sec_edgar import SecEdgarMonitor
 
 log = logging.getLogger(__name__)
 

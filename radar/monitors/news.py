@@ -12,8 +12,8 @@ from typing import Generator
 import xml.etree.ElementTree as ET
 import requests
 
-from meridian.models import Client, Signal, SignalType
-from meridian.monitors.base import BaseMonitor
+from radar.models import Client, Signal, SignalType
+from radar.monitors.base import BaseMonitor
 
 NEWSAPI_BASE = "https://newsapi.org/v2/everything"
 GNEWS_RSS = "https://news.google.com/rss/search?q={query}&hl=en-US&gl=US&ceid=US:en"

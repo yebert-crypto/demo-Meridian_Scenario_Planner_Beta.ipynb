@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import Generator
 
-from meridian.models import Client, Signal
+from radar.models import Client, Signal
 
 
 class BaseMonitor(ABC):

@@ -14,15 +14,15 @@ from typing import Generator
 
 import requests
 
-from meridian.models import Client, Signal, SignalType
-from meridian.monitors.base import BaseMonitor
+from radar.models import Client, Signal, SignalType
+from radar.monitors.base import BaseMonitor
 
 EDGAR_BASE = "https://efts.sec.gov/LATEST/search-index"
 EDGAR_SEARCH = "https://efts.sec.gov/LATEST/search-index"
 EDGAR_COMPANY = "https://www.sec.gov/cgi-bin/browse-edgar"
 EDGAR_SUBMISSIONS = "https://data.sec.gov/submissions"
 
-HEADERS = {"User-Agent": "Meridian BD Monitor legal-bd@perkinscoie.com"}
+HEADERS = {"User-Agent": "Client Radar BD Monitor legal-bd@perkinscoie.com"}
 
 # Form types and the signal they indicate
 FORM_SIGNAL_MAP = {

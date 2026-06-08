@@ -2,8 +2,8 @@
 Seed the database with a sample client list.
 Replace with your actual client data or import from a CSV.
 """
-from meridian import db
-from meridian.models import Client
+from radar import db
+from radar.models import Client
 
 SAMPLE_CLIENTS = [
     Client(0, "Microsoft", ticker="MSFT", domain="microsoft.com", industry="Technology", relationship_partner="Partner A"),

@@ -1,5 +1,5 @@
 """
-Meridian — Client Intelligence Monitor
+Client Radar — BD Intelligence Monitor
 Perkins Coie Business Development
 
 Run with:  streamlit run app.py
@@ -14,13 +14,13 @@ import pandas as pd
 import plotly.express as px
 from datetime import datetime
 
-from meridian import db
-from meridian.models import SignalType, SIGNAL_COLOR
-from meridian.scanner import run_scan
+from radar import db
+from radar.models import SignalType, SIGNAL_COLOR
+from radar.scanner import run_scan
 
 st.set_page_config(
-    page_title="Client Intelligence | Perkins Coie BD",
-    page_icon="⚖️",
+    page_title="Client Radar | Perkins Coie BD",
+    page_icon="📡",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -28,8 +28,8 @@ st.set_page_config(
 # --- Init DB and auto-seed demo data on first run ---
 db.init_db()
 if not db.get_clients():
-    from meridian.seed_clients import seed
-    from meridian.seed_signals import seed_demo_signals
+    from radar.seed_clients import seed
+    from radar.seed_signals import seed_demo_signals
     seed()
     seed_demo_signals()
 
@@ -64,8 +64,8 @@ st.markdown("""
 # === SIDEBAR ===
 with st.sidebar:
     st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Perkins_Coie_logo.svg/320px-Perkins_Coie_logo.svg.png", width=180)
-    st.markdown("## ⚖️ Meridian")
-    st.caption("Client Intelligence Monitor")
+    st.markdown("## 📡 Client Radar")
+    st.caption("Perkins Coie BD Intelligence")
     st.divider()
 
     # Scan controls
@@ -100,7 +100,7 @@ with st.sidebar:
     st.metric("Unread Signals", unread)
 
     if st.button("Seed Sample Clients", use_container_width=True):
-        from meridian.seed_clients import seed
+        from radar.seed_clients import seed
         seed()
         st.success("Sample clients loaded.")
         st.rerun()
@@ -109,7 +109,7 @@ with st.sidebar:
 # === MAIN PANEL ===
 col_title, col_stats = st.columns([3, 1])
 with col_title:
-    st.title("Client Intelligence Feed")
+    st.title("📡 Client Radar")
     st.caption(f"Last refreshed: {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
 
 # Fetch signals

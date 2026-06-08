@@ -10,7 +10,7 @@ import time
 from apscheduler.schedulers.blocking import BlockingScheduler
 from apscheduler.triggers.cron import CronTrigger
 
-from meridian.scanner import run_scan
+from radar.scanner import run_scan
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)
@@ -26,7 +26,7 @@ def scheduled_scan():
 
 
 if __name__ == "__main__":
-    log.info("Meridian scheduler starting. Scans run at 7am, 12pm, 5pm UTC.")
+    log.info("Client Radar scheduler starting. Scans run at 7am, 12pm, 5pm UTC.")
     try:
         scheduler.start()
     except KeyboardInterrupt:

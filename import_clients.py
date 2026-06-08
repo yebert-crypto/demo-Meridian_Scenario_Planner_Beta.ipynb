@@ -9,8 +9,8 @@ Usage:
 """
 import csv
 import sys
-from meridian import db
-from meridian.models import Client
+from radar import db
+from radar.models import Client
 
 
 def import_csv(path: str):

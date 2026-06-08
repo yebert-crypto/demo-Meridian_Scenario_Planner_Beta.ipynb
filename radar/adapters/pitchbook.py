@@ -10,8 +10,8 @@ from typing import Generator
 
 import requests
 
-from meridian.models import Client, Signal, SignalType
-from meridian.monitors.base import BaseMonitor
+from radar.models import Client, Signal, SignalType
+from radar.monitors.base import BaseMonitor
 
 PITCHBOOK_BASE = os.getenv("PITCHBOOK_API_URL", "https://api.pitchbook.com/v1")
 

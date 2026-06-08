@@ -4,7 +4,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-from meridian.models import Client, Signal, SignalType
+from radar.models import Client, Signal, SignalType
 
 import os
 _data_dir = Path(os.getenv("DATA_DIR", Path(__file__).parent.parent / "data"))
