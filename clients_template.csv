@@ -1,0 +1,6 @@
+name,ticker,domain,industry,relationship_partner,notes
+Microsoft,MSFT,microsoft.com,Technology,Partner A,
+Amazon,AMZN,amazon.com,Technology / Retail,Partner B,
+Boeing,BA,boeing.com,Aerospace & Defense,Partner C,
+SpaceX,,spacex.com,Aerospace,Partner C,Private company
+Stripe,,stripe.com,Fintech,Partner D,Private company
