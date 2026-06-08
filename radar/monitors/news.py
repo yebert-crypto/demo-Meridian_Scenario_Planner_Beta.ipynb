@@ -71,15 +71,26 @@ class NewsMonitor(BaseMonitor):
             if pub_dt and pub_dt < cutoff:
                 continue
 
-            title = article.get("title") or article.get("title", "")
+            title = article.get("title") or ""
             description = article.get("description") or article.get("summary", "")
-            combined = f"{title} {description}"
 
-            signal_type = classify_signal(combined)
-
-            # Skip low-priority generic news if it's just a passing mention
-            if signal_type == SignalType.NEWS and not _strong_mention(client.name, combined):
+            # Quick pre-filter: skip if company not mentioned
+            if not _strong_mention(client.name, f"{title} {description}"):
                 continue
+
+            from radar.ai import classify_and_summarize
+            signal_type, summary, bd_insight = classify_and_summarize(
+                headline=title,
+                body=description,
+                company=client.name,
+            )
+
+            if signal_type == SignalType.NEWS:
+                continue  # skip generic news after AI review too
+
+            full_summary = summary
+            if bd_insight:
+                full_summary = f"{summary}\n\n💼 {bd_insight}"
 
             yield Signal(
                 id=None,
@@ -87,7 +98,7 @@ class NewsMonitor(BaseMonitor):
                 client_name=client.name,
                 signal_type=signal_type,
                 headline=title[:300],
-                summary=description[:1000] if description else title,
+                summary=full_summary[:1000],
                 source_url=url or None,
                 source_name=article.get("source", {}).get("name") or "Google News",
                 detected_at=self._now(),
