@@ -19,14 +19,19 @@ from meridian.models import SignalType, SIGNAL_COLOR
 from meridian.scanner import run_scan
 
 st.set_page_config(
-    page_title="Meridian | Client Intelligence",
+    page_title="Client Intelligence | Perkins Coie BD",
     page_icon="⚖️",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# --- Init ---
+# --- Init DB and auto-seed demo data on first run ---
 db.init_db()
+if not db.get_clients():
+    from meridian.seed_clients import seed
+    from meridian.seed_signals import seed_demo_signals
+    seed()
+    seed_demo_signals()
 
 # --- Styles ---
 st.markdown("""

@@ -6,7 +6,9 @@ from typing import Optional
 
 from meridian.models import Client, Signal, SignalType
 
-DB_PATH = Path(__file__).parent.parent / "data" / "meridian.db"
+import os
+_data_dir = Path(os.getenv("DATA_DIR", Path(__file__).parent.parent / "data"))
+DB_PATH = _data_dir / "meridian.db"
 
 
 def init_db():
